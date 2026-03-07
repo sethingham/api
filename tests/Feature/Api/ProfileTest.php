@@ -1,23 +1,23 @@
 <?php
 
-use App\Models\About;
+use App\Models\Profile;
 
-describe('GET /api/v1/about', function () {
-    it('returns the about record in JSON:API format', function () {
-        $about = About::factory()->create();
+describe('GET /api/v1/profile', function () {
+    it('returns the profile in JSON:API format', function () {
+        $profile = Profile::factory()->create();
 
-        $this->getJson('/api/v1/about')
+        $this->getJson('/api/v1/profile')
             ->assertOk()
             ->assertHeader('Content-Type', JSON_API_CONTENT_TYPE)
-            ->assertJsonPath('data.id', (string) $about->id)
-            ->assertJsonPath('data.type', 'about')
+            ->assertJsonPath('data.id', (string) $profile->id)
+            ->assertJsonPath('data.type', 'profile')
             ->assertJsonStructure([
                 'data' => ['id', 'type', 'attributes'],
             ]);
     });
 
     it('returns correct attributes', function () {
-        About::factory()->create([
+        Profile::factory()->create([
             'name' => 'Jane Doe',
             'headline' => 'Full Stack Developer',
             'bio' => 'I build things for the web.',
@@ -25,7 +25,7 @@ describe('GET /api/v1/about', function () {
             'email' => 'jane@example.com',
         ]);
 
-        $this->getJson('/api/v1/about')
+        $this->getJson('/api/v1/profile')
             ->assertOk()
             ->assertJsonPath('data.attributes.name', 'Jane Doe')
             ->assertJsonPath('data.attributes.headline', 'Full Stack Developer')
@@ -35,14 +35,14 @@ describe('GET /api/v1/about', function () {
     });
 
     it('returns null for avatar when not set', function () {
-        About::factory()->create(['avatar' => null]);
+        Profile::factory()->create(['avatar' => null]);
 
-        $this->getJson('/api/v1/about')
+        $this->getJson('/api/v1/profile')
             ->assertOk()
             ->assertJsonPath('data.attributes.avatar', null);
     });
 
-    it('returns 404 when no about record exists', function () {
-        $this->getJson('/api/v1/about')->assertNotFound();
+    it('returns 404 when no profile exists', function () {
+        $this->getJson('/api/v1/profile')->assertNotFound();
     });
 });

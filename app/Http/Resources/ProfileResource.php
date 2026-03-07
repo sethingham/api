@@ -5,11 +5,11 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\JsonApi\JsonApiResource;
 
-class AboutResource extends JsonApiResource
+class ProfileResource extends JsonApiResource
 {
     public function toType(Request $request): string
     {
-        return 'about';
+        return 'profile';
     }
 
     /**
