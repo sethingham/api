@@ -16,11 +16,11 @@ class ProfileSeeder extends Seeder
     public function run(): void
     {
         Profile::updateOrCreate([], [
-            'name' => 'Your Name',
-            'headline' => 'Your Headline',
-            'bio' => 'Your bio goes here.',
+            'name' => 'Seth Bossingham',
+            'headline' => "I'm a full-stack software engineer who loves the craft of building things well and shipping fast.",
+            'bio' => 'I care deeply about code quality, system design, and efficiency at every level — from developer workflows and tooling to application performance and end-user experience. Laravel is my home base, and I thrive when working on complex problems that demand both technical precision and thoughtful architecture.',
             'avatar' => null,
-            'email' => 'you@example.com',
+            'email' => 'seth.bossingham@gmail.com',
         ]);
     }
 }

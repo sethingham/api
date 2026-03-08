@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop
-      - feature/docker-deploy
   pull_request:
 
 jobs:

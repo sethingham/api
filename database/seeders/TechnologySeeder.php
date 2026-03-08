@@ -16,7 +16,7 @@ class TechnologySeeder extends Seeder
     public function run(): void
     {
         $technologies = [
-            //languages/frameworks
+            // languages/frameworks
             'Laravel',
             'Vue',
             'PHP',
@@ -26,15 +26,15 @@ class TechnologySeeder extends Seeder
             'Objective-C',
             'React',
 
-            //css
+            // css
             'Bootstrap',
             'Tailwind',
 
-            //databases
+            // databases
             'MySQL',
             'SQLite',
 
-            //other
+            // other
             'Git',
             'Docker',
             'GCP',
