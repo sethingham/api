@@ -5,12 +5,12 @@ use App\Models\Technology;
 
 const JSON_API_CONTENT_TYPE = 'application/vnd.api+json';
 
-describe('GET /api/v1/projects', function () {
+describe('GET /v1/projects', function () {
     it('returns a list of published projects in JSON:API format', function () {
         $project = Project::factory()->published()->create();
         Project::factory()->draft()->create();
 
-        $this->getJson('/api/v1/projects')
+        $this->getJson('/v1/projects')
             ->assertOk()
             ->assertHeader('Content-Type', JSON_API_CONTENT_TYPE)
             ->assertJsonPath('data.0.id', (string) $project->id)
@@ -25,7 +25,7 @@ describe('GET /api/v1/projects', function () {
     it('does not return draft projects', function () {
         Project::factory()->draft()->count(3)->create();
 
-        $this->getJson('/api/v1/projects')
+        $this->getJson('/v1/projects')
             ->assertOk()
             ->assertJsonCount(0, 'data');
     });
@@ -34,7 +34,7 @@ describe('GET /api/v1/projects', function () {
         $second = Project::factory()->published()->create(['sort_order' => 2]);
         $first = Project::factory()->published()->create(['sort_order' => 1]);
 
-        $this->getJson('/api/v1/projects')
+        $this->getJson('/v1/projects')
             ->assertOk()
             ->assertJsonPath('data.0.id', (string) $first->id)
             ->assertJsonPath('data.1.id', (string) $second->id);
@@ -47,7 +47,7 @@ describe('GET /api/v1/projects', function () {
             'is_featured' => true,
         ]);
 
-        $this->getJson('/api/v1/projects')
+        $this->getJson('/v1/projects')
             ->assertOk()
             ->assertJsonPath('data.0.attributes.title', 'My Project')
             ->assertJsonPath('data.0.attributes.excerpt', 'Short summary')
@@ -57,7 +57,7 @@ describe('GET /api/v1/projects', function () {
     it('does not include relationships without the include parameter', function () {
         Project::factory()->published()->create();
 
-        $response = $this->getJson('/api/v1/projects')->assertOk();
+        $response = $this->getJson('/v1/projects')->assertOk();
 
         expect($response->json('data.0'))->not->toHaveKey('relationships');
         expect($response->json())->not->toHaveKey('included');
@@ -68,7 +68,7 @@ describe('GET /api/v1/projects', function () {
         $project = Project::factory()->published()->create();
         $project->technologies()->attach($tech);
 
-        $this->getJson('/api/v1/projects?include=technologies')
+        $this->getJson('/v1/projects?include=technologies')
             ->assertOk()
             ->assertJsonPath('data.0.relationships.technologies.data.0.id', (string) $tech->id)
             ->assertJsonPath('data.0.relationships.technologies.data.0.type', 'technologies')
@@ -84,7 +84,7 @@ describe('GET /api/v1/projects', function () {
         $projectA->technologies()->attach($tech);
         $projectB->technologies()->attach($tech);
 
-        $this->getJson('/api/v1/projects?include=technologies')
+        $this->getJson('/v1/projects?include=technologies')
             ->assertOk()
             ->assertJsonPath('data.0.relationships.technologies.data.0.id', (string) $tech->id)
             ->assertJsonPath('data.1.relationships.technologies.data.0.id', (string) $tech->id);
@@ -93,7 +93,7 @@ describe('GET /api/v1/projects', function () {
     it('returns paginated results', function () {
         Project::factory()->published()->count(20)->create();
 
-        $this->getJson('/api/v1/projects')
+        $this->getJson('/v1/projects')
             ->assertOk()
             ->assertJsonPath('meta.total', 20)
             ->assertJsonPath('meta.per_page', 15)
@@ -101,11 +101,11 @@ describe('GET /api/v1/projects', function () {
     });
 });
 
-describe('GET /api/v1/projects/{project}', function () {
+describe('GET /v1/projects/{project}', function () {
     it('returns a single project in JSON:API format', function () {
         $project = Project::factory()->published()->create();
 
-        $this->getJson("/api/v1/projects/{$project->id}")
+        $this->getJson("/v1/projects/{$project->id}")
             ->assertOk()
             ->assertHeader('Content-Type', JSON_API_CONTENT_TYPE)
             ->assertJsonPath('data.id', (string) $project->id)
@@ -120,7 +120,7 @@ describe('GET /api/v1/projects/{project}', function () {
             'is_featured' => false,
         ]);
 
-        $this->getJson("/api/v1/projects/{$project->id}")
+        $this->getJson("/v1/projects/{$project->id}")
             ->assertOk()
             ->assertJsonPath('data.attributes.title', 'My Project')
             ->assertJsonPath('data.attributes.url', 'https://example.com')
@@ -128,13 +128,13 @@ describe('GET /api/v1/projects/{project}', function () {
     });
 
     it('returns 404 for a non-existent project', function () {
-        $this->getJson('/api/v1/projects/999')->assertNotFound();
+        $this->getJson('/v1/projects/999')->assertNotFound();
     });
 
     it('does not include relationships without the include parameter', function () {
         $project = Project::factory()->published()->create();
 
-        $response = $this->getJson("/api/v1/projects/{$project->id}")->assertOk();
+        $response = $this->getJson("/v1/projects/{$project->id}")->assertOk();
 
         expect($response->json('data'))->not->toHaveKey('relationships');
         expect($response->json())->not->toHaveKey('included');
@@ -145,7 +145,7 @@ describe('GET /api/v1/projects/{project}', function () {
         $project = Project::factory()->published()->create();
         $project->technologies()->attach($tech);
 
-        $this->getJson("/api/v1/projects/{$project->id}?include=technologies")
+        $this->getJson("/v1/projects/{$project->id}?include=technologies")
             ->assertOk()
             ->assertJsonPath('data.relationships.technologies.data.0.id', (string) $tech->id)
             ->assertJsonPath('included.0.attributes.name', 'Vue');
@@ -154,7 +154,7 @@ describe('GET /api/v1/projects/{project}', function () {
     it('returns an empty technologies relationship when none are attached', function () {
         $project = Project::factory()->published()->create();
 
-        $this->getJson("/api/v1/projects/{$project->id}?include=technologies")
+        $this->getJson("/v1/projects/{$project->id}?include=technologies")
             ->assertOk()
             ->assertJsonPath('data.relationships.technologies.data', []);
     });

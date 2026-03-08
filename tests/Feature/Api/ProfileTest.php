@@ -2,11 +2,11 @@
 
 use App\Models\Profile;
 
-describe('GET /api/v1/profile', function () {
+describe('GET /v1/profile', function () {
     it('returns the profile in JSON:API format', function () {
         $profile = Profile::factory()->create();
 
-        $this->getJson('/api/v1/profile')
+        $this->getJson('/v1/profile')
             ->assertOk()
             ->assertHeader('Content-Type', JSON_API_CONTENT_TYPE)
             ->assertJsonPath('data.id', (string) $profile->id)
@@ -25,7 +25,7 @@ describe('GET /api/v1/profile', function () {
             'email' => 'jane@example.com',
         ]);
 
-        $this->getJson('/api/v1/profile')
+        $this->getJson('/v1/profile')
             ->assertOk()
             ->assertJsonPath('data.attributes.name', 'Jane Doe')
             ->assertJsonPath('data.attributes.headline', 'Full Stack Developer')
@@ -37,12 +37,12 @@ describe('GET /api/v1/profile', function () {
     it('returns null for avatar when not set', function () {
         Profile::factory()->create(['avatar' => null]);
 
-        $this->getJson('/api/v1/profile')
+        $this->getJson('/v1/profile')
             ->assertOk()
             ->assertJsonPath('data.attributes.avatar', null);
     });
 
     it('returns 404 when no profile exists', function () {
-        $this->getJson('/api/v1/profile')->assertNotFound();
+        $this->getJson('/v1/profile')->assertNotFound();
     });
 });
