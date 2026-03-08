@@ -11,31 +11,31 @@ The API is public — no auth needed. Just don't hammer it, it's rate limited.
 Not sure where to start? This will show you around...
 
 ```bash
-curl https://api.iamseth.com/api/v1
+curl https://api.iamseth.com/v1
 ```
 
 Want to know a bit more about me?
 
 ```bash
-curl https://api.iamseth.com/api/v1/profile
+curl https://api.iamseth.com/v1/profile
 ```
 
 Curious what I've been building?
 
 ```bash
-curl https://api.iamseth.com/api/v1/projects
+curl https://api.iamseth.com/v1/projects
 ```
 
 Want to dig into a specific project?
 
 ```bash
-curl https://api.iamseth.com/api/v1/projects/{id}
+curl https://api.iamseth.com/v1/projects/{id}
 ```
 
 What's in my tech stack?
 
 ```bash
-curl https://api.iamseth.com/api/v1/technologies
+curl https://api.iamseth.com/v1/technologies
 ```
 
 ## Setup
