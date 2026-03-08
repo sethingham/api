@@ -6,8 +6,6 @@ A REST API that powers my personal portfolio site. Exposes profile info, project
 
 ## Give it a try
 
-The API is public — no auth needed. Just don't hammer it, it's rate limited.
-
 Not sure where to start? This will show you around...
 
 ```bash
