@@ -66,5 +66,6 @@ jobs:
             APP_ENV=production
             APP_DEBUG=false
             LOG_CHANNEL=stderr
+            APP_URL=https://api.iamseth.com
           secrets: |
             APP_KEY=portfolio-api-key:latest
