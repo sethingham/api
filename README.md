@@ -4,14 +4,39 @@ A REST API that powers my personal portfolio site. Exposes profile info, project
 
 [![Tests](https://github.com/sethingham/api/actions/workflows/tests.yml/badge.svg)](https://github.com/sethingham/api/actions/workflows/tests.yml) ![Deploy to Cloud Run](https://github.com/sethingham/api/actions/workflows/deploy.yml/badge.svg) 
 
-## Endpoints
+## Give it a try
 
-| Method | URI | Description |
-|--------|-----|-------------|
-| GET | `/api/v1/profile` | Profile / about info |
-| GET | `/api/v1/projects` | List all projects |
-| GET | `/api/v1/projects/{project}` | Single project |
-| GET | `/api/v1/technologies` | List all technologies |
+The API is public — no auth needed. Just don't hammer it, it's rate limited.
+
+Not sure where to start? This will show you around...
+
+```bash
+curl https://api.iamseth.com/api/v1
+```
+
+Want to know a bit more about me?
+
+```bash
+curl https://api.iamseth.com/api/v1/profile
+```
+
+Curious what I've been building?
+
+```bash
+curl https://api.iamseth.com/api/v1/projects
+```
+
+Want to dig into a specific project?
+
+```bash
+curl https://api.iamseth.com/api/v1/projects/{id}
+```
+
+What's in my tech stack?
+
+```bash
+curl https://api.iamseth.com/api/v1/technologies
+```
 
 ## Setup
 
