@@ -2,6 +2,8 @@
 
 A Laravel 12 REST API that powers my personal portfolio site. Exposes profile info, projects, and technologies.
 
+[![Tests](https://github.com/sethingham/api/actions/workflows/tests.yml/badge.svg)](https://github.com/sethingham/api/actions/workflows/tests.yml)
+
 ## Endpoints
 
 | Method | URI | Description |
