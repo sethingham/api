@@ -29,7 +29,7 @@ WORKDIR /var/www/html
 
 COPY --from=vendor /app .
 
-# Prepare the SQLite database and cache routes/views for production
+# Prepare the SQLite database and cache routes for production
 RUN cp .env.example .env \
     && php artisan key:generate --force \
     && touch database/database.sqlite \
