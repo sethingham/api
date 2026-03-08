@@ -2,7 +2,7 @@
 
 A REST API that powers my personal portfolio site. Exposes profile info, projects, and technologies.
 
-[![Tests](https://github.com/sethingham/api/actions/workflows/tests.yml/badge.svg)](https://github.com/sethingham/api/actions/workflows/tests.yml)
+[![Tests](https://github.com/sethingham/api/actions/workflows/tests.yml/badge.svg)](https://github.com/sethingham/api/actions/workflows/tests.yml) ![Deploy to Cloud Run](https://github.com/sethingham/api/actions/workflows/deploy.yml/badge.svg) 
 
 ## Endpoints
 
