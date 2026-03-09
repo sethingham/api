@@ -44,7 +44,7 @@ class ProjectSeeder extends Seeder
                 'excerpt' => 'Designed an API for my personal portfolio website',
                 'description' => 'Created an API with Laravel, following the JSON:API spec. I also created a TypeScript (Node.js) SDK for the API, which is used in my portfolio website.',
                 'image' => null,
-                'url' => 'https://api.iamseth.com',
+                'url' => 'https://github.com/sethingham/api',
                 'is_featured' => true,
                 'sort_order' => 1,
                 'published_at' => '2026-03-08 12:00:00',
@@ -52,7 +52,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Portfolio Website',
-                'excerpt' => 'Front end for my personal portfolio website)',
+                'excerpt' => 'Front end for my personal portfolio website',
                 'description' => 'Built the front end of this website using Next.js and React. The website consumes the Portfolio API via the SDK that I built.',
                 'image' => null,
                 'url' => 'https://iamseth.com',
