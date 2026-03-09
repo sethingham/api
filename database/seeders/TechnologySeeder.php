@@ -25,10 +25,11 @@ class TechnologySeeder extends Seeder
             'Typescript',
             'Objective-C',
             'React',
+            'Next.js',
 
             // css
             'Bootstrap',
-            'Tailwind',
+            'Tailwind CSS',
 
             // databases
             'MySQL',
