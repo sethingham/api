@@ -18,7 +18,7 @@ class ProfileSeeder extends Seeder
         Profile::updateOrCreate([], [
             'name' => 'Seth Bossingham',
             'headline' => "I'm a full-stack software engineer who loves the craft of building things well and shipping fast.",
-            'bio' => 'I care deeply about code quality, system design, and efficiency at every level — from developer workflows and tooling to application performance and end-user experience. Laravel is my home base, and I thrive when working on complex problems that demand both technical precision and thoughtful architecture.',
+            'bio' => "I'm a full-stack software engineer who loves the craft of building things well and shipping fast. I care deeply about code quality, system design, and efficiency at every level — from developer workflows and tooling to application performance and end-user experience. Laravel is my home base, and I thrive when working on complex problems that demand both technical precision and thoughtful architecture.",
             'avatar' => null,
             'email' => 'github@iamseth.com',
         ]);
